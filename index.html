@@ -172,19 +172,12 @@
     </div>
 </div>
 
-<audio id="audioPlayer" src="lol.mp3"></audio>
+<audio id="audioPlayer" src="lol.mp3" autoplay></audio>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const audioPlayer = document.getElementById('audioPlayer');
-
-        // Set initial volume to 30%
         audioPlayer.volume = 0.3;
-
-        // Play audio on user interaction (e.g., click)
-        document.addEventListener('click', function() {
-            audioPlayer.play();
-        });
     });
 </script>
 
