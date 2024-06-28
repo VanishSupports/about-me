@@ -172,12 +172,17 @@
     </div>
 </div>
 
-<audio id="audioPlayer" src="lol.mp3" autoplay></audio>
+<audio id="audioPlayer" src="lol.mp3" autoplay muted></audio>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const audioPlayer = document.getElementById('audioPlayer');
-        audioPlayer.volume = 0.3;
+        audioPlayer.volume = 0.7; // Set to 70%
+        audioPlayer.play().then(() => {
+            audioPlayer.muted = false; // Unmute after playback starts
+        }).catch(error => {
+            console.error("Autoplay was prevented:", error);
+        });
     });
 </script>
 
