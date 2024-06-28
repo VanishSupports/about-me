@@ -138,6 +138,42 @@
     .button:hover {
         background-color: #ff6e6e; /* Light red button hover color */
     }
+    /* Modal Styles */
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .modal-content {
+        background-color: #141414;
+        color: #ffffff;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: #ffffff;
+        text-decoration: none;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -172,17 +208,37 @@
     </div>
 </div>
 
-<audio id="audioPlayer" src="lol.mp3" autoplay muted></audio>
+<audio id="audioPlayer" src="lol.mp3"></audio>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Click Anywhere For Audio To Start Playing</p>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const audioPlayer = document.getElementById('audioPlayer');
-        audioPlayer.volume = 0.7; // Set to 70%
-        audioPlayer.play().then(() => {
-            audioPlayer.muted = false; // Unmute after playback starts
-        }).catch(error => {
-            console.error("Autoplay was prevented:", error);
+        const modal = document.getElementById('myModal');
+        const span = document.getElementsByClassName('close')[0];
+
+        // Set initial volume to 30%
+        audioPlayer.volume = 0.7;
+
+        // When the user clicks on the close button, close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Play audio on user interaction (e.g., click)
+        document.addEventListener('click', function() {
+            audioPlayer.play();
+            modal.style.display = "none";
         });
+
+        // Display the modal when the page loads
+        modal.style.display = "flex";
     });
 </script>
 
