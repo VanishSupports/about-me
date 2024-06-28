@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>about me hvrt</title>
+<title>Community Servers</title>
 <style>
     body {
         background-color: #191919; /* Darker background color */
@@ -171,6 +171,22 @@
         <a href="https://discord.gg/GAKDEH3Zcu" target="_blank" class="button">Join Server</a>
     </div>
 </div>
+
+<audio id="audioPlayer" src="lol.mp3"></audio>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        // Set initial volume to 30%
+        audioPlayer.volume = 0.3;
+
+        // Play audio on user interaction (e.g., click)
+        document.addEventListener('click', function() {
+            audioPlayer.play();
+        });
+    });
+</script>
 
 </body>
 </html>
